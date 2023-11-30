@@ -2,14 +2,23 @@ import json
 from pprint import pprint
 
 from dotenv import load_dotenv
+from jisho_api.sentence import Sentence
+from jisho_api.word import Word
 from openai import OpenAI
 
 load_dotenv()
 
 oai_client = OpenAI()
-print(oai_client.api_key)
 
 word = "発行"
+r = Word.request(word)
+print(type(r))
+print(r.data[0].japanese)
+print(" | ".join(r.data[0].senses[0].english_definitions))
+r = Sentence.request(word)
+print(type(r))
+print(r.data[0])
+exit()
 
 prompt = """Please write a simple sentence in Japanese which uses the word {word}.
 Avoid using uncommon words.

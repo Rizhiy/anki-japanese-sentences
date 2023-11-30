@@ -1,3 +1,4 @@
 aqt[qt6]
 openai
 python-dotenv
+jisho_api
